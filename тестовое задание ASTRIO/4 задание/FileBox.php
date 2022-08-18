@@ -4,20 +4,17 @@
         private $file;
         protected static $_instance;
 
-        public function __construct($file)
+        private function __construct($file)
         {
             $this->file = $file;
         }
 
-        public static function getInstance($file) { // получить экземпляр данного класса
-            if (self::$_instance === null) { // если экземпляр данного класса  не создан
-                self::$_instance = new self($file);  // создаем экземпляр данного класса
+        public static function getInstance($file) { 
+            if (self::$_instance === null) { 
+                self::$_instance = new self($file);  
             }
             return self::$_instance;
         }
-       
-        private function __clone() {}
-        public function __wakeup(){}
 
         public function save()
         {

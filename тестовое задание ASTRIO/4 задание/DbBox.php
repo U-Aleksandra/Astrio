@@ -4,21 +4,18 @@
         private $conn;
         protected static $_instance;
 
-        public function __construct($conn)
+        private function __construct($conn)
         {
             $this->conn = $conn;
         }
 
-        public static function getInstance($conn) { // получить экземпляр данного класса
-            if (self::$_instance === null) { // если экземпляр данного класса  не создан
-                self::$_instance = new self($conn);  // создаем экземпляр данного класса
+        public static function getInstance($conn) { 
+            if (self::$_instance === null) { 
+                self::$_instance = new self($conn);  
             }
             return self::$_instance;
         }
-       
-        private function __clone() {}
-        public function __wakeup(){}
-        
+
         public function save()
         {
             if($this->conn->connect_error)
